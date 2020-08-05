@@ -1,0 +1,40 @@
+.player {
+    width: 400px;
+    height: 550px;
+    border-radius: 40px;
+    border: 2px solid black;
+    display: grid;
+    grid-template-rows: 65% 35%;
+    grid-gap: 10px;
+
+    &__user {
+        .option {
+            cursor: pointer;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    &__machine {}
+}
+
+.options {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .option {
+        background-color: transparent;
+        border-radius: 10px;
+        border: 2px solid black;
+        transition: transform .3s ease-in-out;
+    }
+}
+
+.selected {
+    margin: 20px;
+    border-radius: 10px;
+    border: 2px solid black;
+}

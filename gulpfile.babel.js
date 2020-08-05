@@ -13,7 +13,7 @@ const server = browserSync.create();
 // PUG
 gulp.task("views", () => {
   return gulp
-    .src("./dev/views/*.pug")
+    .src("./dev/views/pages/*.pug")
     .pipe(plumber())
     .pipe(
       pug({
