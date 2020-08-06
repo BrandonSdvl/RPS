@@ -1,21 +1,23 @@
-.player.player__user
+#userContainer.player.player__user
         #slectedUser.selected.selected__user
+            img(src="", alt="")#imgSelectedUser.imgSelected
         .options
             #rock.option.option__rock
                 img(src="assets/img/rockSelect.png", alt="Rock")
             #paper.option.option__paper
                 img(src="assets/img/paperSelect.png", alt="Paper")
             #scissors.option.option__scissors
-                img(src="assets/img/paperSelect.png", alt="scissors")
+                img(src="assets/img/scissorSelect.png", alt="Scissors")
 
 include game
 
-.player.player__machine
+#machineContainer.player.player__machine
         #selectedMachine.selected.selected__machine
+            img(src="", alt="")#imgSelectedMachine.imgSelected
         .options
-            #rock.option.option__rock
+            .option.option__rock
                 img(src="assets/img/rockSelect.png", alt="Rock")
-            #paper.option.option__paper
+            .option.option__paper
                 img(src="assets/img/paperSelect.png", alt="Paper")
-            #scissors.option.option__scissors
+            .option.option__scissors
                 img(src="assets/img/scissorSelect.png", alt="scissors")

@@ -12,7 +12,13 @@
             cursor: pointer;
 
             &:hover {
-                transform: scale(1.1);
+                box-shadow: 0px 23px 44px -15px rgba(0, 0, 0, 1);
+                transform: translateY(-10px);
+            }
+
+            &:active {
+                transition: transform .05s ease-in;
+                transform: scale(.9) translateY(-10px);
             }
         }
     }
@@ -26,10 +32,10 @@
     align-items: center;
 
     .option {
-        background-color: transparent;
+        // background-color: transparent;
         border-radius: 10px;
         border: 2px solid black;
-        transition: transform .3s ease-in-out;
+        transition: transform .3s ease-in-out, box-shadow .3s ease-in;
     }
 }
 
@@ -37,4 +43,29 @@
     margin: 20px;
     border-radius: 10px;
     border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .imgSelected {
+        width: 300px;
+    }
+}
+
+.focus {
+    background-color: #00ff006e;
+    transform: translateY(-10px);
+    box-shadow: 0px 23px 44px -15px rgba(0, 0, 0, 1);
+}
+
+.winning {
+    box-shadow: 0px 0px 45px 2px green;
+}
+
+.win {
+    border: 3px solid green;
+}
+
+.lose {
+    border: 3px solid red;
 }
