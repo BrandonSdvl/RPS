@@ -10,8 +10,10 @@ const machineScoreHTML = document.getElementById('machineScore')
 const userContainer = document.getElementById('userContainer')
 const machineContainer = document.getElementById('machineContainer')
 const scoreModal = document.getElementById('scoreModal')
+const startModal = document.getElementById('startModal')
 const restart = document.getElementById('restart')
-
+const startConfirm = document.getElementById('startConfirm')
+const roundsInput = document.getElementById('roundsInput')
 
 let user = ""
 let machine = ""
@@ -19,7 +21,7 @@ let time = 3
 let userScore = 0
 let machineScore = 0
 let gameStarted = false
-let roundsToWin = 1
+let roundsToWin = 0
 
 rock.addEventListener('click', () => {
     if (gameStarted) {
@@ -65,8 +67,12 @@ start.addEventListener('click', () => {
     machineContainer.classList.remove('win')
     machineContainer.classList.remove('lose')
     time = 3
-    timer()
-    start.innerHTML = 'Continue'
+    if (start.innerHTML == 'Start') {
+        startModal.classList.add('lightbox--show')
+        start.innerHTML = 'Continue'
+    } else {
+        timer()
+    }
     start.disabled = true
 })
 
@@ -80,6 +86,22 @@ scoreModal.addEventListener('click', (e) => {
 restart.addEventListener('click', () => {
     scoreModal.classList.remove('lightbox--show')
     reset()
+})
+
+startConfirm.addEventListener('click', (e) => {
+    e.preventDefault()
+    if (document.form.checkValidity()) {
+        roundsToWin = roundsInput.value
+        startModal.classList.remove('lightbox--show')
+        document.getElementById('time').style.display = 'flex'
+        document.getElementById('pointsContainer').style.display = 'block'
+        document.getElementById('points').innerHTML = roundsToWin
+        timer()
+    } else if (roundsInput.value == "") {
+        alert("The input can't be empty")
+    } else if (roundsInput.value <= 0) {
+        alert('Enter a number bigger than 0')
+    }
 })
 
 const startGame = () => {
@@ -148,7 +170,7 @@ const validateScore = () => {
     }
     if (userScore == roundsToWin) {
         start.innerHTML = "Start"
-        scoreModal.classList.add('show')
+        scoreModal.classList.add('lightbox--show')
         document.getElementById('finalScoreUser').innerHTML = userScore
         document.getElementById('finalScoreMachine').innerHTML = machineScore
         document.getElementById('winner').innerHTML = "User Wins!!"
@@ -188,6 +210,8 @@ const reset = () => {
     machineContainer.classList.remove('win')
     machineContainer.classList.remove('lose')
     machineContainer.classList.remove('winning')
+    document.getElementById('time').style.display = 'none'
+    document.getElementById('pointsContainer').style.display = 'none'
     selectedMachine.src = ''
     selectedUser.src = ''
 }

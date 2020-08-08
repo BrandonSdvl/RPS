@@ -1,0 +1,17 @@
+#startModal.lightbox
+    .lightbox__content--start
+        .rules 
+            | Rules: 
+            br
+            | You have 3 seconds to choose one of the options (rock, paper or scissors), if you don't choose any you going to lose your turn and the machine will win.
+            br
+            | You can only choose after of pressing the "Continue" button, if you don't choose before the time expires you will lose your turn and the machine will win
+            br
+            | The first to reach to the amount of points entered wins the game
+
+        form(name="form")
+            .start__content
+                div
+                    | Points to win: 
+                    input(type="number" name="rounds" value="3" min="1" required)#roundsInput.input 
+                button#startConfirm.button Let's Go!!
