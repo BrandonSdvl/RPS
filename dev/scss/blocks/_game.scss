@@ -12,11 +12,12 @@
     width: 300px;
     height: 50px;
     border-radius: 20px;
-    border: 2px solid black;
+    border: $border-base;
     font-size: 30px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    font-weight: $big-font;
 }
 
 .points {
@@ -30,16 +31,19 @@
     height: 50px;
     margin-left: auto;
     margin-right: auto;
-    background-color: lightgreen;
-    border: 2px solid green;
+    background-color: transparent;
+    border: 2px solid $main-color;
     border-radius: 20px;
     font-size: 20px;
-    font-family: 'Century Gothic';
-    transition: transform .2s ease-in;
+    font-family: 'Comfortaa';
+    font-weight: $medium-font;
+    transition: transform .2s ease-in, background .2s ease-in;
     outline: none;
+    color: $dark-color;
 
     &:hover {
-        background-color: transparent;
+        background-color: $main-color;
+        box-shadow: $shadow-base;
     }
 
     &:active {
@@ -55,7 +59,7 @@
     margin-left: auto;
     margin-right: auto;
     border-radius: 50%;
-    border: 2px solid green;
+    border: 2px solid $green;
     display: flex;
     align-items: center;
     justify-content: center;
