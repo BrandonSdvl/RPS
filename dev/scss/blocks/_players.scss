@@ -62,10 +62,18 @@
     box-shadow: 0px 0px 45px 2px $green;
 }
 
+.global-tie {
+    box-shadow: 0px 0px 45px 2px $yellow;
+}
+
 .win {
     border: 3px solid $green;
 }
 
 .lose {
     border: 3px solid $red;
+}
+
+.tie {
+    border: 3px solid $yellow;
 }
