@@ -1,5 +1,5 @@
 .lightbox__content {
-    width: 400px;
+    width: 70vw;
     height: 300px;
     background-color: $dark-color;
     border-radius: 30px;
@@ -12,6 +12,14 @@
     align-items: center;
     z-index: 2000;
 
+    @include tablet {
+        width: 55vw;
+    }
+
+    @include laptop {
+        width: 40vw;
+    }
+
     button {
         color: $light-color;
     }
@@ -19,4 +27,5 @@
 
 .winner {
     padding: 30px;
+    text-align: center;
 }

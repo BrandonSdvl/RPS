@@ -1,0 +1,26 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Comfortaa';
+    background-color: $background;
+    color: $dark-color;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+
+    @include laptop {
+        min-height: 100vh;
+        overflow: hidden;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
+
+img {
+    width: 40px;
+
+    @include laptop {
+        width: 90px;
+    }
+}

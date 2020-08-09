@@ -15,6 +15,7 @@ const restart = document.getElementById('restart')
 const startConfirm = document.getElementById('startConfirm')
 const roundsInput = document.getElementById('roundsInput')
 const currentRoundHTML = document.getElementById('currentRoundHTML')
+const cancel = document.getElementById('cancel')
 
 let user = ""
 let machine = ""
