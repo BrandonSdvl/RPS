@@ -28,7 +28,7 @@ let currentRound = 0
 
 rock.addEventListener('click', () => {
     if (gameStarted) {
-        selectedUser.src = 'assets/img/rockUser.png'
+        selectedUser.src = 'assets/img/rock.svg'
         rock.classList.add('focus')
         paper.classList.remove('focus')
         scissors.classList.remove('focus')
@@ -38,7 +38,7 @@ rock.addEventListener('click', () => {
 
 paper.addEventListener('click', () => {
     if (gameStarted) {
-        selectedUser.src = 'assets/img/paperUser.png'
+        selectedUser.src = 'assets/img/paper.svg'
         rock.classList.remove('focus')
         paper.classList.add('focus')
         scissors.classList.remove('focus')
@@ -48,7 +48,7 @@ paper.addEventListener('click', () => {
 
 scissors.addEventListener('click', () => {
     if (gameStarted) {
-        selectedUser.src = 'assets/img/scissorUser.png'
+        selectedUser.src = 'assets/img/scissors.svg'
         rock.classList.remove('focus')
         paper.classList.remove('focus')
         scissors.classList.add('focus')
@@ -115,13 +115,13 @@ const startGame = () => {
     let machine = Math.floor((Math.random() * 3) + 1)
     if (machine == 1) {
         machine = 'rock'
-        selectedMachine.src = 'assets/img/rockMachine.png'
+        selectedMachine.src = 'assets/img/rock.svg'
     } else if (machine == 2) {
         machine = 'paper'
-        selectedMachine.src = 'assets/img/paperMachine.png'
+        selectedMachine.src = 'assets/img/paper.svg'
     } else if (machine == 3) {
         machine = 'scissors'
-        selectedMachine.src = 'assets/img/scissorMachine.png'
+        selectedMachine.src = 'assets/img/scissors.svg'
     }
     validation(machine, user)
 }
