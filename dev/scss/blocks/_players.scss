@@ -6,7 +6,7 @@
     height: 40vh;
     align-items: center;
     width: 95%;
-    height: 250px;
+    height: 200px;
     padding-right: 10px;
 
     @include tablet {
@@ -67,7 +67,7 @@
         width: 60%;
         display: flex;
         justify-content: center;
-        height: 55px;
+        height: 40px;
 
         @include laptop {
             height: 120px;
@@ -85,7 +85,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 180px;
+    height: 130px;
     padding: 10px;
 
     @include laptop {
@@ -94,7 +94,7 @@
     }
 
     .imgSelected {
-        width: 200px;
+        width: 120px;
 
         @include laptop {
             width: 300px;
