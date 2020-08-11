@@ -4,11 +4,11 @@
 
 @import 'mixins/breakpoints.scss';
 
-@import 'blocks/main';
-@import 'blocks/players';
-@import 'blocks/game';
-@import 'blocks/lightbox';
-@import 'blocks/score-modal';
-@import 'blocks/start-modal';
+@import 'components/main';
+@import 'components/players';
+@import 'components/game';
+@import 'components/lightbox';
+@import 'components/score-modal';
+@import 'components/start-modal';
 
 @import 'pages/index.scss';

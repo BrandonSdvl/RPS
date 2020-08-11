@@ -7,6 +7,12 @@
     grid-gap: 10px;
     align-items: center;
     justify-content: center;
+    background-color: $background;
+    border: $border-base;
+    border-radius: 20px;
+    width: auto;
+    padding: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
 
     @include laptop {
         margin-top: 0;
@@ -77,6 +83,7 @@
     color: $dark-color;
     width: 200px;
     height: 50px;
+
 
     &:hover {
         background-color: $main-color;

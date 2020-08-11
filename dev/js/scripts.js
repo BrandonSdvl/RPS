@@ -1,9 +1,6 @@
-const rock = document.getElementById('rock')
-const paper = document.getElementById('paper')
-const scissors = document.getElementById('scissors')
 const selectedUser = document.getElementById('imgSelectedUser')
 const selectedMachine = document.getElementById('imgSelectedMachine')
-const button = document.getElementById('start')
+const start = document.getElementById('start')
 const timeHTML = document.getElementById('time')
 const userScoreHTML = document.getElementById('userScore')
 const machineScoreHTML = document.getElementById('machineScore')
@@ -16,6 +13,8 @@ const startConfirm = document.getElementById('startConfirm')
 const roundsInput = document.getElementById('roundsInput')
 const currentRoundHTML = document.getElementById('currentRoundHTML')
 const cancel = document.getElementById('cancel')
+const options = document.getElementById('options')
+const player = document.querySelectorAll('.player')
 
 let user = ""
 let machine = ""
@@ -25,34 +24,22 @@ let machineScore = 0
 let gameStarted = false
 let roundsToWin = 0
 let currentRound = 0
+let srcBase = 'assets/img/'
 
-rock.addEventListener('click', () => {
-    if (gameStarted) {
-        selectedUser.src = 'assets/img/rock.svg'
-        rock.classList.add('focus')
-        paper.classList.remove('focus')
-        scissors.classList.remove('focus')
-        user = 'rock'
-    }
-})
-
-paper.addEventListener('click', () => {
-    if (gameStarted) {
-        selectedUser.src = 'assets/img/paper.svg'
-        rock.classList.remove('focus')
-        paper.classList.add('focus')
-        scissors.classList.remove('focus')
-        user = 'paper'
-    }
-})
-
-scissors.addEventListener('click', () => {
-    if (gameStarted) {
-        selectedUser.src = 'assets/img/scissors.svg'
-        rock.classList.remove('focus')
-        paper.classList.remove('focus')
-        scissors.classList.add('focus')
-        user = 'scissors'
+options.addEventListener('click', (e) => {
+    if (gameStarted && (e.target.id == 'rock' || e.target.id == 'paper' || e.target.id == 'scissors')) {
+        document.querySelectorAll('.option').forEach(el => el.classList.remove('focus'))
+        e.target.parentNode.classList.add('focus')
+        if (e.target.id == 'rock') {
+            selectedUser.src = srcBase + 'rock.svg'
+            user = 'rock'
+        } else if (e.target.id == 'paper') {
+            selectedUser.src = srcBase + 'paper.svg'
+            user = 'paper'
+        } else if (e.target.id == 'scissors') {
+            selectedUser.src = srcBase + 'scissors.svg'
+            user = 'scissors'
+        }
     }
 })
 
@@ -62,15 +49,12 @@ start.addEventListener('click', () => {
     selectedUser.src = ''
     user = ''
     machine = ''
-    rock.classList.remove('focus')
-    paper.classList.remove('focus')
-    scissors.classList.remove('focus')
-    userContainer.classList.remove('lose')
-    userContainer.classList.remove('win')
-    userContainer.classList.remove('tie')
-    machineContainer.classList.remove('win')
-    machineContainer.classList.remove('lose')
-    machineContainer.classList.remove('tie')
+    document.querySelectorAll('.option').forEach(el => el.classList.remove('focus'))
+    player.forEach(el => {
+        el.classList.remove('lose')
+        el.classList.remove('win')
+        el.classList.remove('tie')
+    })
     time = 3
     currentRound += 1
     currentRoundHTML.innerHTML = currentRound
@@ -109,6 +93,14 @@ startConfirm.addEventListener('click', (e) => {
     } else if (roundsInput.value <= 0) {
         alert('Enter a number bigger than 0')
     }
+})
+
+cancel.addEventListener('click', (e) => {
+    e.preventDefault()
+    startModal.classList.remove('lightbox--show')
+    start.disabled = false
+    start.innerHTML = "Start"
+    reset()
 })
 
 const startGame = () => {
@@ -177,22 +169,20 @@ const validation = (machine, user) => {
 }
 
 const validateScore = () => {
+    player.forEach(el => {
+        el.classList.remove('winning')
+        el.classList.remove('global-tie')
+    })
+
     if (userScore > machineScore) {
         userContainer.classList.add('winning')
-        machineContainer.classList.remove('winning')
-        userContainer.classList.remove('global-tie')
-        machineContainer.classList.remove('global-tie')
     } else if (machineScore > userScore) {
-        userContainer.classList.remove('winning')
         machineContainer.classList.add('winning')
-        userContainer.classList.remove('global-tie')
-        machineContainer.classList.remove('global-tie')
     } else if (machineScore == userScore) {
-        userContainer.classList.remove('winning')
-        machineContainer.classList.remove('winning')
         userContainer.classList.add('global-tie')
         machineContainer.classList.add('global-tie')
     }
+
     if (roundsToWin == currentRound) {
         start.innerHTML = "Start"
         scoreModal.classList.add('lightbox--show')
@@ -227,19 +217,15 @@ const reset = () => {
     currentRound = 0
     userScoreHTML.innerHTML = userScore
     machineScoreHTML.innerHTML = machineScore
-    rock.classList.remove('focus')
-    paper.classList.remove('focus')
-    scissors.classList.remove('focus')
-    userContainer.classList.remove('lose')
-    userContainer.classList.remove('win')
-    userContainer.classList.remove('tie')
-    userContainer.classList.remove('winning')
-    userContainer.classList.remove('global-tie')
-    machineContainer.classList.remove('win')
-    machineContainer.classList.remove('lose')
-    machineContainer.classList.remove('tie')
-    machineContainer.classList.remove('winning')
-    machineContainer.classList.remove('global-tie')
+    gameStarted = false
+    document.querySelectorAll('.option').forEach(el => el.classList.remove('focus'))
+    player.forEach(el => {
+        el.classList.remove('lose')
+        el.classList.remove('win')
+        el.classList.remove('tie')
+        el.classList.remove('winning')
+        el.classList.remove('global-tie')
+    })
     document.getElementById('time').style.display = 'none'
     document.getElementById('roundsContainer').style.display = 'none'
     selectedMachine.src = ''
