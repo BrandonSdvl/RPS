@@ -30,20 +30,28 @@ options.addEventListener('click', (e) => {
     if (gameStarted && (e.target.id == 'rock' || e.target.id == 'paper' || e.target.id == 'scissors')) {
         document.querySelectorAll('.option').forEach(el => el.classList.remove('focus'))
         e.target.parentNode.classList.add('focus')
-        if (e.target.id == 'rock') {
-            selectedUser.src = srcBase + 'rock.svg'
-            user = 'rock'
-        } else if (e.target.id == 'paper') {
-            selectedUser.src = srcBase + 'paper.svg'
-            user = 'paper'
-        } else if (e.target.id == 'scissors') {
-            selectedUser.src = srcBase + 'scissors.svg'
-            user = 'scissors'
+        // Set the corresponding image and the value for the user
+        switch (e.target.id) {
+            case 'rock':
+                selectedUser.src = srcBase + 'rock.svg'
+                user = 'rock'
+                break;
+            case 'paper':
+                selectedUser.src = srcBase + 'paper.svg'
+                user = 'paper'
+                break
+            case 'scissors':
+                selectedUser.src = srcBase + 'scissors.svg'
+                user = 'scissors'
+                break
+            default:
+                break;
         }
     }
 })
 
 start.addEventListener('click', () => {
+    // Initialize variables
     gameStarted = true
     selectedMachine.src = ''
     selectedUser.src = ''
@@ -104,21 +112,29 @@ cancel.addEventListener('click', (e) => {
 })
 
 const startGame = () => {
+    // Generate a random number and asign an image and a value to the machine
     let machine = Math.floor((Math.random() * 3) + 1)
-    if (machine == 1) {
-        machine = 'rock'
-        selectedMachine.src = 'assets/img/rock.svg'
-    } else if (machine == 2) {
-        machine = 'paper'
-        selectedMachine.src = 'assets/img/paper.svg'
-    } else if (machine == 3) {
-        machine = 'scissors'
-        selectedMachine.src = 'assets/img/scissors.svg'
+    switch (machine) {
+        case 1:
+            machine = 'rock'
+            selectedMachine.src = 'assets/img/rock.svg'
+            break;
+        case 2:
+            machine = 'paper'
+            selectedMachine.src = 'assets/img/paper.svg'
+            break
+        case 3:
+            machine = 'scissors'
+            selectedMachine.src = 'assets/img/scissors.svg'
+            break
+        default:
+            break;
     }
     validation(machine, user)
 }
 
 const validation = (machine, user) => {
+    // Validate who is the winner of the round or if there is a tie and assign the corresponding classes
     if (user == '') {
         machineScore += 1
         machineContainer.classList.add('win')
@@ -169,6 +185,7 @@ const validation = (machine, user) => {
 }
 
 const validateScore = () => {
+    // Validate if the round is the last or not and who is the global winner 
     player.forEach(el => {
         el.classList.remove('winning')
         el.classList.remove('global-tie')
@@ -199,6 +216,7 @@ const validateScore = () => {
 }
 
 const timer = () => {
+    // Set the time to choose
     timeHTML.innerHTML = time
     time -= 1
     if (time >= 0) {
