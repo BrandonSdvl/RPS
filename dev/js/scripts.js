@@ -113,8 +113,8 @@ cancel.addEventListener('click', (e) => {
 
 const startGame = () => {
     // Generate a random number and asign an image and a value to the machine
-    let machine = Math.floor((Math.random() * 3) + 1)
-    switch (machine) {
+    let machineValue = Math.floor((Math.random() * 3) + 1)
+    switch (machineValue) {
         case 1:
             machine = 'rock'
             selectedMachine.src = 'assets/img/rock.svg'
@@ -130,10 +130,10 @@ const startGame = () => {
         default:
             break;
     }
-    validation(machine, user)
+    validation(machine)
 }
 
-const validation = (machine, user) => {
+const validation = (machine) => {
     // Validate who is the winner of the round or if there is a tie and assign the corresponding classes
     if (user == '') {
         machineScore += 1
