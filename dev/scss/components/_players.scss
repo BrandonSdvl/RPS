@@ -24,23 +24,17 @@
         padding-right: 0;
     }
 
-    &__user {
+    &--user {
         .option {
             cursor: pointer;
 
             &:hover {
                 box-shadow: $shadow-base;
-                transform: translateY(-5px);
-            }
-
-            &:active {
-                transition: transform .05s ease-in;
-                transform: scale(.9) translateY(-5px);
             }
         }
     }
 
-    &__machine {
+    &--machine {
         margin-top: 20px;
 
         @include laptop {
@@ -60,7 +54,6 @@
     }
 
     .option {
-        // background-color: transparent;
         margin-top: 10px;
         border-radius: 10px;
         border: $border-base;
@@ -98,7 +91,6 @@
     padding: 10px;
 
     @include laptop {
-        // height: 200px;
         height: 80%;
     }
 

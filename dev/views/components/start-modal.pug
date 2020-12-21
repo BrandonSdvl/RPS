@@ -1,6 +1,6 @@
 #startModal.lightbox
     .lightbox__content--start
-        .advice 
+        .lightbox__advice 
             span Advice: 
             br
             br
@@ -13,10 +13,10 @@
             | The winner will be the player with the most points.
 
         form(name="form")
-            .start__content
+            .lightbox__form
                 div
                     | Rounds: 
-                    input(type="number" name="rounds" value="3" min="1" required)#roundsInput.input 
+                    input(type="number" name="rounds" value="3" min="1" required)#roundsInput.lightbox__input 
                 .buttonContainer
                     button#cancel.button Cancel
                     button#startConfirm.button Let's Go!!

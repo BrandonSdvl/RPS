@@ -17,4 +17,56 @@
     &--show {
         transform: scale(1);
     }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        font-weight: $medium-font;
+
+        button {
+            color: $light-color;
+        }
+
+        div {
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            font-size: $font-size-medium;
+            justify-content: center;
+
+            @include tablet {
+                font-size: $font-size-big;
+            }
+        }
+    }
+
+    &__input {
+        height: 30px;
+        width: 20%;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid $light-color;
+        color: $light-color;
+        margin-left: 20px;
+        font-size: $font-size-medium;
+        text-align: center;
+
+        @include tablet {
+            font-size: $font-size-big;
+        }
+    }
+
+    &__advice {
+        font-size: $font-size-small;
+        font-weight: $small-font;
+
+        @include tablet {
+            font-size: $font-size-medium;
+        }
+
+        span {
+            font-weight: $medium-font;
+        }
+    }
 }
